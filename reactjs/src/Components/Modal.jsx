@@ -37,21 +37,21 @@ const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="modal-close" onClick={onClose}>Đóng</button>
+    <div className="mdal-overlay">
+      <div className="mdal">
+        
         <div>
           <label>Tên thiết bị:</label>
-          <input type="text" name="deviceName" value={deviceInfo.deviceName} onChange={handleChange} />
+          <input style={{ marginLeft: '10px' ,marginTop: '10px'}}  type="text" name="deviceName" value={deviceInfo.deviceName} onChange={handleChange} />
         </div>
         <div>
           <label>Tên topic:</label>
-          <input type="text" name="topicName" value={deviceInfo.topicName} onChange={handleChange} />
+          <input style={{ marginLeft: '25px' ,marginTop: '10px'}}  type="text" name="topicName" value={deviceInfo.topicName} onChange={handleChange} />
         </div>
 
         {/* Các trường dữ liệu CPU và RAM, bạn có thể thêm các input phù hợp ở đây */}
-       
-        <button onClick={handleAddDevice}>Thêm thiết bị</button>
+        <button class="btn btn-outline-danger" style={{ marginLeft: '10px' ,marginTop: '10px'}} onClick={onClose}>Đóng</button>
+        <button class="btn btn-outline-success" style={{ marginLeft: '10px' ,marginTop: '10px'}} onClick={handleAddDevice}>Thêm thiết bị</button>
       </div>
     </div>
   );

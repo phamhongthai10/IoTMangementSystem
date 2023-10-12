@@ -22,7 +22,6 @@ client.on('message', (topic,message)=>
 
 })
 
-
 app.get('http://localhost:3001/api/add-device', (req, res) => {
         
     res.json({ value: myValue });

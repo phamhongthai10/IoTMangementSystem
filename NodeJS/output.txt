@@ -1,0 +1,47 @@
+May 03 10:23:24 raspberrypi alsactl[340]: alsa-lib main.c:1014:(snd_use_case_mgr_open) error: failed to import hw:0 use case configuration -2
+May 03 10:23:24 raspberrypi alsactl[340]: alsa-lib main.c:1014:(snd_use_case_mgr_open) error: failed to import hw:1 use case configuration -2
+May 03 10:23:59 raspberrypi dbus-daemon[472]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.16" (uid=1000 pid=774 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.2" (uid=0 pid=486 comm="/usr/libexec/bluetooth/bluetoothd ")
+May 03 10:23:59 raspberrypi dbus-daemon[472]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.16" (uid=1000 pid=774 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.2" (uid=0 pid=486 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 26 23:17:30 raspberrypi lightdm[571]: error: unexpectedly disconnected from boot status daemon
+Sep 27 11:21:23 raspberrypi lightdm[565]: error: unexpectedly disconnected from boot status daemon
+Sep 27 12:03:07 raspberrypi lightdm[568]: error: unexpectedly disconnected from boot status daemon
+Sep 27 17:04:27 raspberrypi dbus-daemon[394]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.32" (uid=1000 pid=674 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.20" (uid=0 pid=650 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:04:27 raspberrypi dbus-daemon[394]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.32" (uid=1000 pid=674 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.20" (uid=0 pid=650 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:04:28 raspberrypi vncserver-x11[552]: SPrintConnMgr: Failed to remove printer: server-error-internal-error
+Sep 27 17:04:37 raspberrypi lightdm[571]: error: unexpectedly disconnected from boot status daemon
+Sep 27 17:06:29 raspberrypi dbus-daemon[394]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.31" (uid=1000 pid=694 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.21" (uid=0 pid=645 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:06:29 raspberrypi dbus-daemon[394]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.31" (uid=1000 pid=694 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.21" (uid=0 pid=645 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:06:29 raspberrypi vncserver-x11-serviced[922]: vncserverui: Fatal IO error 0 (Success) on X server :0.
+Sep 27 17:11:55 raspberrypi dbus-daemon[395]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.31" (uid=1000 pid=742 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.21" (uid=0 pid=643 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:11:55 raspberrypi dbus-daemon[395]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.31" (uid=1000 pid=742 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.21" (uid=0 pid=643 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 17:12:05 raspberrypi lightdm[569]: error: unexpectedly disconnected from boot status daemon
+Sep 27 17:21:22 raspberrypi kernel: ieee80211 phy0: brcmf_cfg80211_get_tx_power: error (-110)
+Sep 27 17:21:22 raspberrypi pipewire-media-session[788]: error id:0 seq:347 res:-32 (Broken pipe): connection error
+Sep 27 17:21:30 raspberrypi lightdm[576]: error: unexpectedly disconnected from boot status daemon
+Sep 27 17:23:50 raspberrypi lightdm[575]: error: unexpectedly disconnected from boot status daemon
+Sep 27 19:40:20 raspberrypi kernel: ieee80211 phy0: brcmf_cfg80211_get_tx_power: error (-110)
+Sep 27 19:40:20 raspberrypi pipewire-media-session[847]: error id:0 seq:347 res:-32 (Broken pipe): connection error
+Sep 27 19:40:29 raspberrypi lightdm[574]: error: unexpectedly disconnected from boot status daemon
+Sep 27 20:41:20 raspberrypi vncserver-x11-serviced[984]: vncserverui: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+Sep 27 20:41:33 raspberrypi lightdm[578]: error: unexpectedly disconnected from boot status daemon
+Sep 27 21:16:04 raspberrypi lightdm[563]: error: unexpectedly disconnected from boot status daemon
+Sep 27 21:34:13 raspberrypi lightdm[574]: error: unexpectedly disconnected from boot status daemon
+Sep 27 21:44:52 raspberrypi lightdm[572]: error: unexpectedly disconnected from boot status daemon
+Sep 27 22:48:48 raspberrypi lightdm[570]: error: unexpectedly disconnected from boot status daemon
+Sep 27 23:19:38 raspberrypi lightdm[570]: error: unexpectedly disconnected from boot status daemon
+Sep 27 23:25:15 raspberrypi dbus-daemon[385]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.36" (uid=1000 pid=764 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.26" (uid=0 pid=655 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 23:25:15 raspberrypi dbus-daemon[385]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.36" (uid=1000 pid=764 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo") interface="(unset)" member="(unset)" error name="org.freedesktop.DBus.Error.UnknownMethod" requested_reply="0" destination=":1.26" (uid=0 pid=655 comm="/usr/libexec/bluetooth/bluetoothd ")
+Sep 27 23:25:16 raspberrypi pipewire-media-session[796]: error id:0 seq:347 res:-32 (Broken pipe): connection error
+Sep 27 23:25:23 raspberrypi lightdm[570]: error: unexpectedly disconnected from boot status daemon
+Sep 27 23:27:44 raspberrypi lightdm[556]: error: unexpectedly disconnected from boot status daemon
+Sep 28 04:15:12 raspberrypi lightdm[571]: error: unexpectedly disconnected from boot status daemon
+Sep 28 04:15:42 raspberrypi node[519]:         RX errors 0  dropped 0  overruns 0  frame 0
+Sep 28 04:15:42 raspberrypi node[519]:         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+Sep 28 04:15:42 raspberrypi node[519]:         RX errors 0  dropped 0  overruns 0  frame 0
+Sep 28 04:15:42 raspberrypi node[519]:         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+Sep 28 04:15:42 raspberrypi node[519]:         RX errors 0  dropped 0  overruns 0  frame 0
+Sep 28 04:15:42 raspberrypi node[519]:         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+Sep 28 06:31:59 raspberrypi lightdm[560]: error: unexpectedly disconnected from boot status daemon
+Sep 28 07:18:48 raspberrypi lightdm[568]: error: unexpectedly disconnected from boot status daemon
+Sep 28 07:25:14 raspberrypi lightdm[574]: error: unexpectedly disconnected from boot status daemon
+Sep 28 08:30:37 raspberrypi node[535]: Received command: journalctl | grep error

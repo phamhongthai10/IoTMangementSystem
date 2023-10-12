@@ -1,10 +1,10 @@
  // constants.js
-let globalValue = "Giá trị global variable";
+let globalValue
 
 export const getGlobalValue = () => {
   return globalValue;
 };
 
 export const setGlobalValue = (newValue) => {
-  globalValue = newValue;
+   globalValue = newValue;
 };

@@ -2,29 +2,30 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose')
+const processDataFromMQTT = require('./processDatafromMQTT')
+const deviceModel = require('./deviceModel'); 
+const deviceInfo = require('./deviceInfo');
+// Đường dẫn đến tệp chứa deviceModel
+const rebootDevice = require('./writeDB')
+const terminal = require('./terminal')
+const fs = require('fs');
 
+// const topic = "orangepi";
 app.use(cors());
 app.use(express.json());
 
-// Định nghĩa schema và mô hình dữ liệu cho thiết bị
-const deviceSchema = new mongoose.Schema({
-  deviceName: String,
-  topicName: String,
-  cpuData: { timestamp: Date, value: Number },
-  ramData: { timestamp: Date, value: Number }
-});
-
-// TẠO MODEL MONGOOSE
-const deviceModel = mongoose.model("Device",deviceSchema);
 
 
-
-mongoose.connect('mongodb://localhost:27017/my_database')
+mongoose.connect('mongodb://localhost:27017/my_database', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  //useFindAndModify: false
+})
   .then(function(){
     console.log("Connect database success")
   })
   .catch(function(error){
-    console.log("ERROR DB")
+   console.log("ERROR DB",error)
   })
 app.post('/api/post-data', async (req, res) => {
   res.json("ok")
@@ -41,17 +42,27 @@ app.post('/api/post-data', async (req, res) => {
 //     res.status(500).json({ error: 'Lỗi khi lưu thiết bị' });
 //   }
 
-console.log(req)
+//console.log(req)
 const data = req.body;
 
 // THÊM THIẾT BỊ
 deviceModel.create({
   deviceName : data.deviceName,
   topicName : data.topicName,
-  cpuData : { timestamp: new Date(), value: 80 },
-  ramData : { timestamp: new Date(), value: 80 }
+  cpuData : { timestamp: new Date(), value: 0 },
+  ramData : { timestamp: new Date(), value: 0 }
 });
-console.log(data.deviceName);
+
+deviceInfo.create({
+name:'orange pi',
+processor: 'rk3588s',
+memory: "2gb",
+disk: "32gb",
+architecture:"arrm32",
+os:"armbian",
+version:"armbian blueye",
+})
+
 });
 
 // Khởi chạy server và lắng nghe cổng 3001
@@ -59,7 +70,7 @@ app.listen(3001, () => {
   console.log('Server đã khởi động và lắng nghe cổng 3001');
 });
 
-// LIST THIẾT BỊ
+//LIST THIẾT BỊ
 // async function getDeviceNames() {
 //   try {
 //     const deviceNames = await deviceModel.distinct('deviceName');
@@ -124,6 +135,7 @@ const fetchDataAndSendSSE = async () => {
    // console.log(latestDeviceData);
     // Gửi dữ liệu mới nhất cho mỗi deviceName thông qua SSE
     sendSSEData(latestDeviceData);
+   // console.log("chay duoc den day")
   } catch (error) {
     console.log("bug", error);
   }
@@ -182,7 +194,7 @@ setInterval(() => {
 app.post('/api/delete', async (req, res) => {
   const deviceNameDelete = req.body.data
   // Xác định giá trị deviceNameDelete từ req.body.data
-  console.log(deviceNameDelete)
+  console.log("xoa",deviceNameDelete)
   try {
     // Xoá tất cả các bản ghi có cùng deviceNameDelete từ cơ sở dữ liệu
     const result = await deviceModel.deleteMany({ deviceName: deviceNameDelete });
@@ -191,4 +203,87 @@ app.post('/api/delete', async (req, res) => {
     res.status(500).json({ error: "Xoá các bản ghi thất bại." });
   }
 });
+
+app.post('/api/reboot', async (req, res) => {
+  const deviceNameReboot = req.body.data.globalValue;
+  // Xác định giá trị deviceNameDelete từ req.body.data
+  try{
+    rebootDevice(deviceNameReboot);
+    res.status(200).json("Okk");
+  }catch{
+  }
+});
+
+app.post('/api/terminal', async (req, res) => {
+  const command = req.body.terminalInput;
+  const deviceNameCM = req.body.deviceName;
+  console.log(command, deviceNameCM);
+
+  try {
+    const result = await terminal(deviceNameCM, command);
+    if (result === "done") {
+      console.log("nicexu")
+      fs.readFile("./output.txt", "utf8", (err, data) => {
+        if (err) {
+          console.error("Error reading file:", err);
+          console.log("chan vl")
+           res.status(500).json("Error");
+        }
+        else{
+          console.log(data)
+        res.status(200).json(data);
+        }
+      });
+    } 
+    
+  } catch (error) {
+  //  res.status(500).json("Error");
+  }
+});
+
+app.post('/api/getCPU', async (req, res) => {
+  try {
+    // Xoá tất cả các bản ghi có cùng deviceNameDelete từ cơ sở dữ liệu
+    const deviceName = req.body.globalValue
+   // console.log(deviceName)
+  // // Xác định giá trị deviceNameDelete từ req.body.data
+  // const device = await deviceModel.find({ deviceName: deviceName });
+  // //  console.log(device)
+  //   console.log(device[0].cpuData.value);
+  //   const cpuData = device[0].cpuData.value
+  //   if(cpuData == null) cpuData = 0;
+  processDataFromMQTT(deviceName,(cpuData) => {
+   // console.log('cpuData received in main:', cpuData,deviceName);
+    res.status(200).json(cpuData);
+});
+    
+  } catch (error) {
+    res.status(200).json(1);
+  }
+});
+
+
+app.post('/api/getDataArray', async (req, res) => {
+  const targetDeviceName = req.body.globalValue
+  
+  try {
+    
+        const devices = await deviceModel.find({ deviceName: targetDeviceName }).exec();
+        
+        const dataArray = devices.map(device => {
+          return {
+            timestamp: device.cpuData.timestamp,
+            cpuValue: device.cpuData.value,
+            ramValue: device.ramData.value
+          };
+        });
+        
+       
+        res.status(200).json(dataArray);
+  
+  } catch (error) {
+    res.status(200).json(1);
+  }
+});
+
 

@@ -1,5 +1,5 @@
 /* Modal.css */
-.modal-overlay {
+.mdal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,13 +11,16 @@
     justify-content: center;
   }
   
-  .modal {
+  .mdal {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
+    width: 400px;
+    height: 200px;
+
   }
   
-  .modal-close {
+  .mdal-close {
     float: right;
     cursor: pointer;
     background: none;

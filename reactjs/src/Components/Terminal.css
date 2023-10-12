@@ -1,0 +1,39 @@
+/* src/components/Terminal.css */
+.terminal {
+    background: black;
+    color: white;
+    font-family: monospace;
+    padding: 10px;
+    border: 2px solid white;
+    min-height: 300px;
+  }
+  
+  .terminal-output div {
+    white-space: pre-wrap;
+  }
+  
+  .terminal-input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .terminal-input span {
+    color: green;
+    margin-right: 5px;
+  }
+  
+  .terminal-input input {
+    background: transparent;
+    border: none;
+    color: white;
+    flex: 1;
+  }
+  
+  .terminal-input button {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+  

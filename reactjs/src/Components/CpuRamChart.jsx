@@ -1,62 +1,60 @@
-import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import React from "react";
+import GaugeChart from "react-gauge-chart";
 
-const CpuRamChart = ({ cpu, ram }) => {
-  const cpuData = [
-    { name: 'Used', value: cpu },
-    { name: 'Free', value: 100 - cpu },
-  ];
-
-  const ramData = [
-    { name: 'Used', value: ram },
-    { name: 'Free', value: 100 - ram },
-  ];
-
-  const COLORS = ['#0088FE', '#00C49F'];
-
+const CpuRamGaugeChart = ({ cpu, ram }) => {
   return (
-    <div>
-      <h2>CPU Usage</h2>
-      <PieChart width={300} height={300}>
-        <Pie
-          data={cpuData}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-          fill="#8884d8"
-          label
-        >
-          {cpuData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
+    
+    <div style={{ display: "flex" }}>
+      <div style={{ marginRight: "20px" }}>
+      <style>
+        {`
+          .gauge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
 
-      <h2>RAM Usage</h2>
-      <PieChart width={300} height={300}>
-        <Pie
-          data={ramData}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-          fill="#8884d8"
-          label
-        >
-          {ramData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
+          .gauge-label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+          }
+        `}
+      </style>
+        <h2>CPU Usage</h2>
+        <div className="gauge-container">
+          <GaugeChart
+            id="cpu-gauge-chart"
+            nrOfLevels={20}
+            arcsLength={[0.3, 0.3, 0.3]}
+            colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+            percent={cpu / 100}
+            arcPadding={0.02}
+            cornerRadius={10}
+            style={{ width: "400px" }}
+          />
+          <div className="gauge-label">{cpu.toFixed(2)}%</div>
+        </div>
+      </div>
+
+      <div>
+        <h2>RAM Usage</h2>
+        <div className="gauge-container">
+          <GaugeChart
+            id="ram-gauge-chart"
+            nrOfLevels={20}
+            arcsLength={[0.3, 0.3, 0.3]}
+            colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+            percent={ram / 100}
+            arcPadding={0.02}
+            cornerRadius={10}
+            style={{ width: "400px" }}
+          />
+          <div className="gauge-label">{ram.toFixed(2)}%</div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CpuRamChart;
+export default CpuRamGaugeChart;
